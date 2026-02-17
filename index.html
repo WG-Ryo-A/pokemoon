@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -192,6 +193,87 @@
   @keyframes fadeInDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
   @keyframes fadeInUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
   @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+  /* ======= RESPONSIVE ======= */
+  @media (max-width: 768px) {
+
+    /* NAV */
+    nav { padding: 0 20px; height: 60px; }
+    .nav-links { display: none; }
+    .nav-cta { padding: 8px 16px; font-size: 0.65rem; }
+    .nav-logo { font-size: 1.1rem; }
+
+    /* HERO */
+    .hero { padding: 100px 24px 80px; }
+    .hero-moon { width: 320px; height: 320px; }
+    .hero-oripa-badge { font-size: 0.7rem; padding: 10px 18px; letter-spacing: 0.1em; text-align: center; }
+    .hero-stats { gap: 20px; flex-wrap: wrap; }
+    .stat-num { font-size: 2.8rem; }
+    .stat-div { height: 40px; }
+    .hero-desc { font-size: 0.88rem; }
+    .hero-buttons { flex-direction: column; align-items: center; }
+    .btn-gold, .btn-outline { width: 100%; max-width: 300px; text-align: center; padding: 16px 24px; }
+
+    /* ORIPA LINEUP */
+    .oripa-section { padding: 80px 20px; }
+    .oripa-lineup { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .oripa-card { padding: 28px 14px 24px; }
+    .oripa-price { font-size: 1.4rem; }
+    .oripa-kangen { font-size: 0.95rem; }
+
+    /* APPEAL */
+    .oripa-appeal { grid-template-columns: 1fr; gap: 32px; padding: 40px 28px; }
+
+    /* HOW TO */
+    .howto-section { padding: 80px 20px; }
+    .howto-grid { grid-template-columns: 1fr 1fr; gap: 40px 20px; }
+    .howto-grid::before { display: none; }
+    .howto-num { width: 64px; height: 64px; font-size: 1.2rem; }
+
+    /* FEATURES */
+    .features-section { padding: 80px 20px; }
+    .features-grid { grid-template-columns: 1fr; }
+
+    /* KAITORI */
+    #kaitori { padding: 80px 20px !important; }
+    #kaitori > div:last-child { grid-template-columns: 1fr 1fr !important; gap: 12px !important; }
+
+    /* SHOP */
+    .shop-section { padding: 80px 20px; }
+    .shop-grid { grid-template-columns: 1fr; gap: 40px; }
+    .shop-map-ph { aspect-ratio: 16/9; }
+
+    /* CTA */
+    .cta-section { padding: 80px 20px; }
+    .cta-inner { padding: 48px 24px; }
+    .cta-title { font-size: 1.4rem; }
+    .cta-section .btn-gold,
+    .cta-section .btn-outline { width: 100%; max-width: 300px; }
+    .cta-inner > div:last-child { flex-direction: column; align-items: center; }
+
+    /* SECTION COMMONS */
+    .section-title { font-size: 1.5rem; }
+    .section-subtitle { font-size: 0.82rem; }
+
+    /* FOOTER */
+    footer { padding: 48px 20px 28px; }
+    .footer-top { flex-direction: column; gap: 36px; }
+    .footer-nav { flex-wrap: wrap; gap: 32px; }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+
+    /* HOWTO SECTION COMMONS */
+    .howto-section .section-label,
+    .oripa-section .section-label,
+    .features-section .section-label { font-size: 0.58rem; }
+  }
+
+  @media (max-width: 480px) {
+    .oripa-lineup { grid-template-columns: 1fr; max-width: 320px; margin-left: auto; margin-right: auto; }
+    .howto-grid { grid-template-columns: 1fr; }
+    #kaitori > div:last-child { grid-template-columns: 1fr !important; }
+    .hero-stats { flex-direction: column; gap: 16px; }
+    .stat-div { width: 60px; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,151,58,0.4), transparent); }
+  }
 </style>
 </head>
 <body>
