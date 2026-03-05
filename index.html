@@ -4,301 +4,1097 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ポケMoon | ポケモンカード専門店・オリパ販売</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Noto+Serif+JP:wght@300;400;600;700&display=swap" rel="stylesheet">
+<title>一騎当選 | ポケモンカード専門店・オリパ販売</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Zen+Kaku+Gothic+New:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --royal-blue: #1a2d6b;
-    --deep-blue: #0d1a45;
-    --midnight: #07102e;
-    --gold: #c9973a;
-    --gold-light: #f0c96a;
-    --gold-bright: #ffe08a;
-    --white: #ffffff;
-    --text-light: #e8e8f0;
-    --text-muted: #8898cc;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { background-color: var(--midnight); color: var(--text-light); font-family: 'Noto Serif JP', serif; overflow-x: hidden; }
-  body::before {
-    content: '';
-    position: fixed; inset: 0;
-    background-image:
-      radial-gradient(1px 1px at 15% 25%, rgba(255,224,138,0.6) 0%, transparent 100%),
-      radial-gradient(1px 1px at 45% 10%, rgba(255,255,255,0.5) 0%, transparent 100%),
-      radial-gradient(1.5px 1.5px at 70% 35%, rgba(255,224,138,0.4) 0%, transparent 100%),
-      radial-gradient(1px 1px at 85% 60%, rgba(255,255,255,0.4) 0%, transparent 100%),
-      radial-gradient(1px 1px at 30% 70%, rgba(255,224,138,0.5) 0%, transparent 100%),
-      radial-gradient(1px 1px at 55% 80%, rgba(255,255,255,0.3) 0%, transparent 100%),
-      radial-gradient(1px 1px at 90% 20%, rgba(255,224,138,0.4) 0%, transparent 100%),
-      radial-gradient(1px 1px at 10% 90%, rgba(255,255,255,0.3) 0%, transparent 100%),
-      radial-gradient(1px 1px at 60% 50%, rgba(255,224,138,0.3) 0%, transparent 100%),
-      radial-gradient(1px 1px at 25% 45%, rgba(255,255,255,0.4) 0%, transparent 100%),
-      radial-gradient(1px 1px at 78% 85%, rgba(255,224,138,0.5) 0%, transparent 100%),
-      radial-gradient(1px 1px at 40% 55%, rgba(255,255,255,0.2) 0%, transparent 100%);
-    z-index: 0; pointer-events: none;
-  }
+:root {
+  --crimson: #dc143c;
+  --dark-red: #8b0000;
+  --black: #0a0a0a;
+  --deep-black: #050505;
+  --gold: #ffd700;
+  --bright-gold: #ffea00;
+  --dark-gold: #b8860b;
+  --white: #ffffff;
+  --off-white: #f5f5f5;
+  --gray: #333333;
+}
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-    padding: 0 60px;
-    background: linear-gradient(180deg, rgba(7,16,46,0.97) 0%, rgba(7,16,46,0.85) 100%);
-    border-bottom: 1px solid rgba(201,151,58,0.3);
-    backdrop-filter: blur(12px);
-    display: flex; align-items: center; justify-content: space-between; height: 72px;
-  }
-  .nav-logo { font-family: 'Cinzel Decorative', cursive; font-size: 1.5rem; font-weight: 700; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-bright) 50%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 0.05em; text-decoration: none; }
-  .nav-logo span { font-size: 0.6rem; font-family: 'Noto Serif JP', serif; font-weight: 300; -webkit-text-fill-color: var(--text-muted); display: block; letter-spacing: 0.2em; margin-top: 2px; }
-  .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
-  .nav-links a { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.12em; color: var(--text-muted); text-decoration: none; text-transform: uppercase; transition: color 0.3s; }
-  .nav-links a:hover { color: var(--gold-light); }
-  .nav-links a.nav-oripa { color: var(--gold-bright); font-weight: 700; padding: 6px 14px; border: 1px solid rgba(255,224,138,0.4); background: rgba(201,151,58,0.08); animation: navGlow 2.5s ease-in-out infinite; }
-  @keyframes navGlow { 0%,100%{box-shadow:0 0 8px rgba(201,151,58,0.3)} 50%{box-shadow:0 0 20px rgba(201,151,58,0.6)} }
-  .nav-cta { padding: 10px 24px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-bright) 100%); color: var(--midnight) !important; font-family: 'Cinzel', serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-decoration: none; text-transform: uppercase; transition: all 0.3s; box-shadow: 0 4px 20px rgba(201,151,58,0.4); }
-  .nav-cta:hover { box-shadow: 0 6px 30px rgba(201,151,58,0.6); transform: translateY(-1px); }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
-  /* HERO */
-  .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 120px 60px 80px; }
-  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(26,45,107,0.8) 0%, transparent 70%), radial-gradient(ellipse 50% 80% at 80% 50%, rgba(201,151,58,0.08) 0%, transparent 60%), linear-gradient(180deg, var(--midnight) 0%, #0a142f 50%, var(--midnight) 100%); }
-  .hero-moon { position: absolute; width: 650px; height: 650px; border-radius: 50%; border: 1px solid rgba(201,151,58,0.12); top: 50%; left: 50%; transform: translate(-50%, -50%); animation: moonPulse 6s ease-in-out infinite; }
-  .hero-moon::before { content: ''; position: absolute; inset: 24px; border-radius: 50%; border: 1px solid rgba(201,151,58,0.08); }
-  .hero-moon::after { content: ''; position: absolute; inset: -36px; border-radius: 50%; border: 1px solid rgba(201,151,58,0.06); }
-  @keyframes moonPulse { 0%,100%{transform:translate(-50%,-50%) scale(1);opacity:1} 50%{transform:translate(-50%,-50%) scale(1.03);opacity:0.7} }
-  .hero-content { position: relative; z-index: 2; text-align: center; max-width: 960px; }
+body {
+  background-color: var(--black);
+  color: var(--white);
+  font-family: 'Noto Sans JP', sans-serif;
+  overflow-x: hidden;
+}
 
-  .hero-oripa-badge { display: inline-flex; align-items: center; gap: 12px; padding: 12px 32px; background: linear-gradient(135deg, rgba(201,151,58,0.2), rgba(255,224,138,0.08)); border: 1px solid rgba(201,151,58,0.6); font-size: 0.95rem; font-weight: 600; color: var(--gold-bright); letter-spacing: 0.2em; margin-bottom: 32px; animation: fadeInDown 1s ease both, badgePulse 3s ease-in-out 1s infinite; }
-  @keyframes badgePulse { 0%,100%{box-shadow:0 0 20px rgba(201,151,58,0.2)} 50%{box-shadow:0 0 40px rgba(201,151,58,0.5),0 0 80px rgba(201,151,58,0.2)} }
+/* 斜線背景パターン */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(220,20,60,0.03) 40px, rgba(220,20,60,0.03) 80px),
+    repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(220,20,60,0.02) 40px, rgba(220,20,60,0.02) 80px);
+  z-index: 0;
+  pointer-events: none;
+}
 
-  .hero-title { font-family: 'Cinzel Decorative', cursive; font-size: clamp(3.5rem, 8vw, 7rem); font-weight: 900; line-height: 1; background: linear-gradient(180deg, var(--gold-bright) 0%, var(--gold) 40%, var(--gold-light) 70%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 0.05em; margin-bottom: 8px; animation: fadeInUp 1s ease 0.2s both; filter: drop-shadow(0 0 40px rgba(201,151,58,0.4)); }
-  .hero-subtitle-jp { font-size: 0.95rem; font-weight: 300; letter-spacing: 0.5em; color: var(--text-muted); margin-bottom: 40px; animation: fadeInUp 1s ease 0.4s both; }
+/* ======= NAV ======= */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: linear-gradient(180deg, rgba(10,10,10,0.98) 0%, rgba(10,10,10,0.95) 100%);
+  border-bottom: 2px solid var(--crimson);
+  backdrop-filter: blur(10px);
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 60px;
+}
 
-  .hero-stats { display: flex; align-items: center; justify-content: center; gap: 48px; margin-bottom: 44px; animation: fadeInUp 1s ease 0.5s both; }
-  .stat-item { text-align: center; }
-  .stat-num { font-family: 'Cinzel Decorative', cursive; font-size: clamp(2.8rem, 5vw, 4.5rem); font-weight: 900; background: linear-gradient(180deg, var(--gold-bright) 0%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; filter: drop-shadow(0 0 20px rgba(201,151,58,0.6)); }
-  .stat-label { font-size: 0.72rem; letter-spacing: 0.2em; color: var(--text-muted); margin-top: 6px; font-weight: 300; }
-  .stat-div { width: 1px; height: 60px; background: linear-gradient(180deg, transparent, rgba(201,151,58,0.4), transparent); }
+.nav-logo {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 1.9rem;
+  font-weight: 900;
+  font-style: italic;
+  background: linear-gradient(165deg, var(--crimson) 0%, var(--dark-red) 30%, var(--gold) 60%, var(--bright-gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  text-shadow: none;
+  position: relative;
+  filter: drop-shadow(3px 3px 0 #000) drop-shadow(5px 5px 10px rgba(0,0,0,0.8));
+  transform: skewX(-8deg);
+}
 
-  .hero-desc { font-size: 1rem; font-weight: 300; line-height: 2; color: rgba(232,232,240,0.8); max-width: 580px; margin: 0 auto 48px; animation: fadeInUp 1s ease 0.6s both; letter-spacing: 0.05em; }
-  .hero-buttons { display: flex; gap: 20px; justify-content: center; animation: fadeInUp 1s ease 0.8s both; }
-  .btn-gold { padding: 20px 56px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-bright) 50%, var(--gold) 100%); color: var(--midnight); font-family: 'Cinzel', serif; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.2em; text-decoration: none; text-transform: uppercase; transition: all 0.4s; box-shadow: 0 8px 40px rgba(201,151,58,0.6); position: relative; overflow: hidden; }
-  .btn-gold::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, transparent, rgba(255,255,255,0.25), transparent); transform: translateX(-100%); transition: transform 0.5s; }
-  .btn-gold:hover::before { transform: translateX(100%); }
-  .btn-gold:hover { box-shadow: 0 12px 60px rgba(201,151,58,0.8); transform: translateY(-3px); }
-  .btn-outline { padding: 20px 44px; background: transparent; color: var(--gold-light); font-family: 'Cinzel', serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.2em; text-decoration: none; text-transform: uppercase; border: 1px solid rgba(201,151,58,0.4); transition: all 0.3s; }
-  .btn-outline:hover { background: rgba(201,151,58,0.08); border-color: var(--gold); transform: translateY(-2px); }
+.nav-logo::before {
+  content: '一騎当選';
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  z-index: -1;
+  background: linear-gradient(165deg, #fff 0%, #fff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 3px rgba(255,255,255,0.8));
+}
 
-  .hero-scroll { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; animation: fadeIn 1s ease 1.5s both; }
-  .scroll-line { width: 1px; height: 48px; background: linear-gradient(180deg, transparent, var(--gold), transparent); animation: scrollAnim 2s ease-in-out infinite; }
-  .scroll-text { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.35em; color: var(--text-muted); text-transform: uppercase; }
-  @keyframes scrollAnim { 0%,100%{opacity:0.4} 50%{opacity:1} }
+.nav-logo span {
+  display: block;
+  font-size: 0.48rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: var(--off-white);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+  margin-top: 2px;
+  transform: skewX(8deg);
+  font-style: normal;
+}
 
-  .gold-divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), var(--gold-bright), var(--gold), transparent); opacity: 0.35; }
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  align-items: center;
+}
 
-  /* SECTION COMMONS */
-  .section-label { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.5em; color: var(--gold); text-transform: uppercase; text-align: center; margin-bottom: 14px; }
-  .section-title { font-family: 'Cinzel Decorative', cursive; font-size: clamp(1.6rem, 3vw, 2.6rem); text-align: center; background: linear-gradient(180deg, var(--gold-bright) 0%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 14px; letter-spacing: 0.05em; }
-  .section-subtitle { text-align: center; font-size: 0.88rem; font-weight: 300; color: var(--text-muted); letter-spacing: 0.08em; margin-bottom: 64px; line-height: 1.9; }
+.nav-links a {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--off-white);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  position: relative;
+  padding: 4px 0;
+}
 
-  /* ORIPA SECTION */
-  .oripa-section { position: relative; z-index: 1; padding: 120px 80px; background: linear-gradient(180deg, var(--midnight) 0%, rgba(13,26,69,0.6) 50%, var(--midnight) 100%); }
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--crimson), var(--gold));
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
 
-  .oripa-lineup { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; max-width: 1200px; margin: 0 auto 72px; }
-  .oripa-card { position: relative; padding: 40px 18px 32px; border: 1px solid rgba(201,151,58,0.25); text-align: center; background: linear-gradient(160deg, rgba(13,26,69,0.9), rgba(7,16,46,0.95)); transition: all 0.4s; cursor: default; overflow: hidden; }
-  .oripa-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, var(--gold), var(--gold-bright), var(--gold), transparent); transform: scaleX(0); transition: transform 0.4s; }
-  .oripa-card:hover::before { transform: scaleX(1); }
-  .oripa-card:hover { transform: translateY(-10px); border-color: rgba(201,151,58,0.5); box-shadow: 0 24px 60px rgba(0,0,0,0.6), 0 0 40px rgba(201,151,58,0.15); background: linear-gradient(160deg, rgba(26,45,107,0.9), rgba(13,26,69,0.95)); }
-  .oripa-card.featured { border-color: rgba(201,151,58,0.6); background: linear-gradient(160deg, rgba(26,45,107,0.95), rgba(13,26,69,0.98)); box-shadow: 0 12px 48px rgba(201,151,58,0.2); }
-  .oripa-card.featured::before { transform: scaleX(1); }
-  .oripa-popular { position: absolute; top: -1px; right: -1px; background: linear-gradient(135deg, var(--gold), var(--gold-bright)); color: var(--midnight); font-family: 'Cinzel', serif; font-size: 0.52rem; font-weight: 700; letter-spacing: 0.12em; padding: 5px 10px; text-transform: uppercase; }
-  .oripa-icon { font-size: 2.2rem; margin-bottom: 14px; display: block; filter: drop-shadow(0 0 10px rgba(201,151,58,0.5)); }
-  .oripa-price { font-family: 'Cinzel Decorative', cursive; font-size: 1.7rem; font-weight: 900; background: linear-gradient(180deg, var(--gold-bright) 0%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 4px; line-height: 1; }
-  .oripa-name { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 18px; display: block; }
-  .oripa-kangen { font-size: 1.05rem; font-weight: 700; color: var(--gold-bright); margin-bottom: 2px; font-family: 'Cinzel', serif; }
-  .oripa-kangen-sub { font-size: 0.65rem; color: var(--text-muted); font-weight: 300; margin-bottom: 16px; display: block; }
-  .oripa-contents { font-size: 0.72rem; color: rgba(232,232,240,0.65); line-height: 1.85; font-weight: 300; border-top: 1px solid rgba(201,151,58,0.15); padding-top: 14px; }
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { transform: scaleX(1); }
 
-  /* APPEAL BAND */
-  .oripa-appeal { max-width: 1200px; margin: 0 auto; padding: 52px 56px; border: 1px solid rgba(201,151,58,0.3); background: linear-gradient(135deg, rgba(26,45,107,0.4), rgba(7,16,46,0.7)); display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px; position: relative; overflow: hidden; }
-  .oripa-appeal::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), var(--gold-bright), var(--gold), transparent); }
-  .oripa-appeal::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), var(--gold-bright), var(--gold), transparent); }
-  .appeal-item { text-align: center; }
-  .appeal-icon { font-size: 2rem; display: block; margin-bottom: 14px; filter: drop-shadow(0 0 10px rgba(201,151,58,0.4)); }
-  .appeal-title { font-family: 'Cinzel', serif; font-size: 0.8rem; font-weight: 700; color: var(--gold-light); letter-spacing: 0.12em; margin-bottom: 12px; }
-  .appeal-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.9; font-weight: 300; }
+.nav-links a.nav-oripa {
+  background: linear-gradient(135deg, var(--crimson) 0%, var(--dark-red) 100%);
+  color: var(--gold);
+  padding: 8px 18px;
+  border: 1px solid var(--gold);
+  font-weight: 900;
+  animation: navPulse 2s ease-in-out infinite;
+}
 
-  /* HOW TO */
-  .howto-section { padding: 120px 80px; position: relative; z-index: 1; }
-  .howto-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; max-width: 1100px; margin: 0 auto; position: relative; }
-  .howto-grid::before { content: ''; position: absolute; top: 44px; left: calc(12.5% + 44px); right: calc(12.5% + 44px); height: 1px; background: linear-gradient(90deg, var(--gold), var(--gold-bright), var(--gold)); opacity: 0.3; }
-  .howto-step { text-align: center; padding: 0 20px; }
-  .howto-num { width: 88px; height: 88px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-bright)); display: flex; align-items: center; justify-content: center; margin: 0 auto 28px; font-family: 'Cinzel Decorative', cursive; font-size: 1.6rem; color: var(--midnight); font-weight: 900; box-shadow: 0 8px 32px rgba(201,151,58,0.4); position: relative; z-index: 1; }
-  .howto-title { font-family: 'Cinzel', serif; font-size: 0.82rem; font-weight: 600; color: var(--gold-light); letter-spacing: 0.15em; margin-bottom: 12px; }
-  .howto-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.9; font-weight: 300; }
+@keyframes navPulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(220,20,60,0.5); }
+  50% { box-shadow: 0 0 25px rgba(220,20,60,0.8), 0 0 50px rgba(255,215,0,0.3); }
+}
 
-  /* FEATURES */
-  .features-section { padding: 120px 80px; background: linear-gradient(180deg, var(--midnight) 0%, rgba(13,26,69,0.3) 50%, var(--midnight) 100%); position: relative; z-index: 1; }
-  .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; max-width: 1100px; margin: 0 auto; background: linear-gradient(135deg, rgba(201,151,58,0.12), rgba(201,151,58,0.02)); border: 1px solid rgba(201,151,58,0.12); }
-  .feature-card { background: linear-gradient(135deg, rgba(13,26,69,0.95), rgba(7,16,46,0.98)); padding: 48px 36px; text-align: center; transition: all 0.4s; cursor: default; position: relative; overflow: hidden; }
-  .feature-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); transform: scaleX(0); transition: transform 0.4s; }
-  .feature-card:hover::before { transform: scaleX(1); }
-  .feature-card:hover { background: linear-gradient(135deg, rgba(26,45,107,0.95), rgba(13,26,69,0.98)); transform: translateY(-4px); }
-  .feature-icon { font-size: 2.2rem; margin-bottom: 18px; display: block; filter: drop-shadow(0 0 10px rgba(201,151,58,0.4)); }
-  .feature-title { font-family: 'Cinzel', serif; font-size: 0.86rem; font-weight: 600; color: var(--gold-light); letter-spacing: 0.12em; margin-bottom: 12px; }
-  .feature-desc { font-size: 0.8rem; font-weight: 300; color: var(--text-muted); line-height: 1.9; }
+.nav-cta {
+  padding: 12px 28px;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--bright-gold) 100%);
+  color: var(--black);
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: 2px solid var(--dark-gold);
+  transition: all 0.3s;
+  box-shadow: 0 4px 20px rgba(255,215,0,0.4);
+}
 
-  /* SHOP */
-  .shop-section { padding: 120px 80px; position: relative; z-index: 1; }
-  .shop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; max-width: 1100px; margin: 0 auto; align-items: center; }
-  .shop-map-ph { aspect-ratio: 4/3; background: linear-gradient(135deg, rgba(26,45,107,0.5), rgba(13,26,69,0.8)); border: 1px solid rgba(201,151,58,0.25); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; position: relative; }
-  .shop-map-ph::before { content: ''; position: absolute; width: 180px; height: 180px; border-radius: 50%; border: 1px solid rgba(201,151,58,0.12); top: 50%; left: 50%; transform: translate(-50%,-50%); }
-  .map-icon { font-size: 3rem; filter: drop-shadow(0 0 12px rgba(201,151,58,0.5)); }
-  .map-label { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.3em; color: var(--gold-light); text-transform: uppercase; }
-  .shop-info h3 { font-family: 'Cinzel Decorative', cursive; font-size: 1.8rem; background: linear-gradient(135deg, var(--gold-bright), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 32px; }
-  .limited-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: linear-gradient(135deg, rgba(192,57,43,0.3), rgba(192,57,43,0.1)); border: 1px solid rgba(192,57,43,0.5); font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.2em; color: #ff8a80; text-transform: uppercase; margin-bottom: 12px; }
-  .info-table { width: 100%; border-collapse: collapse; }
-  .info-table tr { border-bottom: 1px solid rgba(201,151,58,0.1); }
-  .info-table td { padding: 14px 0; font-size: 0.85rem; line-height: 1.7; letter-spacing: 0.04em; }
-  .info-table td:first-child { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; width: 105px; vertical-align: top; padding-top: 16px; }
-  .info-table td:last-child { color: var(--text-light); font-weight: 300; }
+.nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(255,215,0,0.6);
+}
 
-  /* CTA */
-  .cta-section { padding: 100px 80px; text-align: center; position: relative; z-index: 1; }
-  .cta-inner { max-width: 720px; margin: 0 auto; padding: 72px 56px; border: 1px solid rgba(201,151,58,0.3); background: linear-gradient(135deg, rgba(26,45,107,0.3), rgba(7,16,46,0.8)); position: relative; overflow: hidden; }
-  .cta-inner::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), var(--gold-bright), var(--gold), transparent); }
-  .cta-inner::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), var(--gold-bright), var(--gold), transparent); }
-  .cta-title { font-family: 'Cinzel Decorative', cursive; font-size: 1.8rem; background: linear-gradient(135deg, var(--gold-bright), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 18px; }
-  .cta-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.9; margin-bottom: 40px; font-weight: 300; }
+/* ======= HERO ======= */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 60px 80px;
+  overflow: hidden;
+}
 
-  /* FOOTER */
-  footer { background: rgba(4,9,24,0.98); border-top: 1px solid rgba(201,151,58,0.2); padding: 56px 80px 36px; position: relative; z-index: 1; }
-  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(201,151,58,0.1); }
-  .footer-logo { font-family: 'Cinzel Decorative', cursive; font-size: 1.4rem; font-weight: 700; background: linear-gradient(135deg, var(--gold), var(--gold-bright), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
-  .footer-tagline { font-size: 0.76rem; color: var(--text-muted); letter-spacing: 0.1em; font-weight: 300; }
-  .footer-nav { display: flex; gap: 52px; }
-  .footer-nav-group h4 { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; }
-  .footer-nav-group ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-  .footer-nav-group a { font-size: 0.78rem; color: var(--text-muted); text-decoration: none; transition: color 0.3s; font-weight: 300; }
-  .footer-nav-group a:hover { color: var(--gold-light); }
-  .footer-bottom { display: flex; justify-content: space-between; align-items: center; }
-  .footer-copy { font-size: 0.7rem; color: rgba(136,152,204,0.4); letter-spacing: 0.1em; font-family: 'Cinzel', serif; }
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(220,20,60,0.4) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 20% 60%, rgba(139,0,0,0.3) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 80% 40%, rgba(220,20,60,0.2) 0%, transparent 60%),
+    linear-gradient(180deg, var(--black) 0%, #1a0a0a 50%, var(--black) 100%);
+}
 
-  .corner-decor { position: absolute; width: 36px; height: 36px; }
-  .corner-decor.tl { top: 20px; left: 20px; border-top: 1px solid rgba(201,151,58,0.4); border-left: 1px solid rgba(201,151,58,0.4); }
-  .corner-decor.tr { top: 20px; right: 20px; border-top: 1px solid rgba(201,151,58,0.4); border-right: 1px solid rgba(201,151,58,0.4); }
-  .corner-decor.bl { bottom: 20px; left: 20px; border-bottom: 1px solid rgba(201,151,58,0.4); border-left: 1px solid rgba(201,151,58,0.4); }
-  .corner-decor.br { bottom: 20px; right: 20px; border-bottom: 1px solid rgba(201,151,58,0.4); border-right: 1px solid rgba(201,151,58,0.4); }
+/* 赤い放射線エフェクト */
+.hero-rays {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background:
+    conic-gradient(from 0deg, transparent 0deg, rgba(220,20,60,0.1) 30deg, transparent 60deg,
+                   transparent 120deg, rgba(220,20,60,0.08) 150deg, transparent 180deg,
+                   transparent 240deg, rgba(220,20,60,0.12) 270deg, transparent 300deg);
+  animation: rayRotate 20s linear infinite;
+  pointer-events: none;
+}
 
-  @keyframes fadeInDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
-  @keyframes fadeInUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
-  @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+@keyframes rayRotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
 
-  /* ======= RESPONSIVE ======= */
-  @media (max-width: 768px) {
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 1000px;
+}
 
-    /* NAV */
-    nav { padding: 0 20px; height: 60px; }
-    .nav-links { display: none; }
-    .nav-cta { padding: 8px 16px; font-size: 0.65rem; }
-    .nav-logo { font-size: 1.1rem; }
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 32px;
+  background: linear-gradient(135deg, rgba(220,20,60,0.3), rgba(139,0,0,0.5));
+  border: 2px solid var(--crimson);
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 900;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  animation: fadeInDown 1s ease both, badgeGlow 3s ease-in-out 1s infinite;
+  box-shadow: 0 0 30px rgba(220,20,60,0.5);
+}
 
-    /* HERO */
-    .hero { padding: 100px 24px 80px; }
-    .hero-moon { width: 320px; height: 320px; }
-    .hero-oripa-badge { font-size: 0.7rem; padding: 10px 18px; letter-spacing: 0.1em; text-align: center; }
-    .hero-stats { gap: 20px; flex-wrap: wrap; }
-    .stat-num { font-size: 2.8rem; }
-    .stat-div { height: 40px; }
-    .hero-desc { font-size: 0.88rem; }
-    .hero-buttons { flex-direction: column; align-items: center; }
-    .btn-gold, .btn-outline { width: 100%; max-width: 300px; text-align: center; padding: 16px 24px; }
+@keyframes badgeGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(220,20,60,0.5); }
+  50% { box-shadow: 0 0 50px rgba(220,20,60,0.8), 0 0 80px rgba(255,215,0,0.3); }
+}
 
-    /* ORIPA LINEUP */
-    .oripa-section { padding: 80px 20px; }
-    .oripa-lineup { grid-template-columns: 1fr 1fr; gap: 12px; }
-    .oripa-card { padding: 28px 14px 24px; }
-    .oripa-price { font-size: 1.4rem; }
-    .oripa-kangen { font-size: 0.95rem; }
+.hero-title {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: clamp(4.5rem, 11vw, 10rem);
+  font-weight: 900;
+  font-style: italic;
+  line-height: 0.85;
+  background: linear-gradient(165deg, var(--crimson) 0%, var(--dark-red) 25%, var(--gold) 55%, var(--bright-gold) 85%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+  animation: fadeInUp 1s ease 0.2s both;
+  filter: drop-shadow(5px 5px 0 #000) drop-shadow(8px 8px 20px rgba(0,0,0,0.9));
+  transform: skewX(-8deg);
+  position: relative;
+}
 
-    /* APPEAL */
-    .oripa-appeal { grid-template-columns: 1fr; gap: 32px; padding: 40px 28px; }
+.hero-title::before {
+  content: '一騎当選';
+  position: absolute;
+  left: -3px;
+  top: -3px;
+  z-index: -1;
+  background: linear-gradient(165deg, #fff 0%, #fff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 5px rgba(255,255,255,0.9));
+}
 
-    /* HOW TO */
-    .howto-section { padding: 80px 20px; }
-    .howto-grid { grid-template-columns: 1fr 1fr; gap: 40px 20px; }
-    .howto-grid::before { display: none; }
-    .howto-num { width: 64px; height: 64px; font-size: 1.2rem; }
+.hero-subtitle {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.4em;
+  color: var(--off-white);
+  margin-bottom: 48px;
+  animation: fadeInUp 1s ease 0.4s both;
+}
 
-    /* FEATURES */
-    .features-section { padding: 80px 20px; }
-    .features-grid { grid-template-columns: 1fr; }
+.hero-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 56px;
+  margin-bottom: 48px;
+  animation: fadeInUp 1s ease 0.5s both;
+}
 
-    /* KAITORI */
-    #kaitori { padding: 80px 20px !important; }
-    #kaitori > div:last-child { grid-template-columns: 1fr 1fr !important; gap: 12px !important; }
+.stat-item {
+  text-align: center;
+  position: relative;
+}
 
-    /* SHOP */
-    .shop-section { padding: 80px 20px; }
-    .shop-grid { grid-template-columns: 1fr; gap: 40px; }
-    .shop-map-ph { aspect-ratio: 16/9; }
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 400;
+  line-height: 1;
+  background: linear-gradient(180deg, var(--gold) 0%, var(--bright-gold) 50%, var(--dark-gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 40px rgba(255,215,0,0.6);
+  filter: drop-shadow(0 0 20px rgba(255,215,0,0.4));
+}
 
-    /* CTA */
-    .cta-section { padding: 80px 20px; }
-    .cta-inner { padding: 48px 24px; }
-    .cta-title { font-size: 1.4rem; }
-    .cta-section .btn-gold,
-    .cta-section .btn-outline { width: 100%; max-width: 300px; }
-    .cta-inner > div:last-child { flex-direction: column; align-items: center; }
+.stat-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--off-white);
+  margin-top: 8px;
+  font-weight: 400;
+}
 
-    /* SECTION COMMONS */
-    .section-title { font-size: 1.5rem; }
-    .section-subtitle { font-size: 0.82rem; }
+.stat-div {
+  width: 2px;
+  height: 70px;
+  background: linear-gradient(180deg, transparent, var(--crimson), transparent);
+}
 
-    /* FOOTER */
-    footer { padding: 48px 20px 28px; }
-    .footer-top { flex-direction: column; gap: 36px; }
-    .footer-nav { flex-wrap: wrap; gap: 32px; }
-    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+.hero-desc {
+  font-size: 1.05rem;
+  font-weight: 400;
+  line-height: 2;
+  color: rgba(245,245,245,0.9);
+  max-width: 620px;
+  margin: 0 auto 56px;
+  animation: fadeInUp 1s ease 0.6s both;
+}
 
-    /* HOWTO SECTION COMMONS */
-    .howto-section .section-label,
-    .oripa-section .section-label,
-    .features-section .section-label { font-size: 0.58rem; }
-  }
+.hero-buttons {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  animation: fadeInUp 1s ease 0.8s both;
+}
 
-  @media (max-width: 480px) {
-    .oripa-lineup { grid-template-columns: 1fr; max-width: 320px; margin-left: auto; margin-right: auto; }
-    .howto-grid { grid-template-columns: 1fr; }
-    #kaitori > div:last-child { grid-template-columns: 1fr !important; }
-    .hero-stats { flex-direction: column; gap: 16px; }
-    .stat-div { width: 60px; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,151,58,0.4), transparent); }
-  }
+.btn-red {
+  padding: 20px 60px;
+  background: linear-gradient(135deg, var(--crimson) 0%, var(--dark-red) 100%);
+  color: var(--gold);
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: 2px solid var(--gold);
+  transition: all 0.3s;
+  box-shadow: 0 8px 40px rgba(220,20,60,0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-red::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent, rgba(255,255,255,0.2), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.5s;
+}
+
+.btn-red:hover::before { transform: translateX(100%); }
+.btn-red:hover { box-shadow: 0 12px 60px rgba(220,20,60,0.9); transform: translateY(-3px); }
+
+.btn-gold-outline {
+  padding: 20px 48px;
+  background: transparent;
+  color: var(--gold);
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: 2px solid var(--gold);
+  transition: all 0.3s;
+}
+
+.btn-gold-outline:hover {
+  background: rgba(255,215,0,0.1);
+  box-shadow: 0 0 30px rgba(255,215,0,0.4);
+  transform: translateY(-2px);
+}
+
+/* ======= DIVIDER ======= */
+.divider {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--crimson), var(--gold), var(--crimson), transparent);
+  opacity: 0.6;
+}
+
+/* ======= SECTION COMMONS ======= */
+.section-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.5em;
+  color: var(--crimson);
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 900;
+  text-align: center;
+  background: linear-gradient(180deg, var(--gold) 0%, var(--bright-gold) 50%, var(--dark-gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 40px rgba(255,215,0,0.4);
+  margin-bottom: 16px;
+  letter-spacing: 0.1em;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 0.92rem;
+  font-weight: 400;
+  color: rgba(245,245,245,0.8);
+  letter-spacing: 0.1em;
+  margin-bottom: 72px;
+  line-height: 1.9;
+}
+
+/* ======= ORIPA SECTION ======= */
+.oripa-section {
+  position: relative;
+  z-index: 1;
+  padding: 120px 80px;
+  background: linear-gradient(180deg, var(--black) 0%, #150505 50%, var(--black) 100%);
+}
+
+.oripa-lineup {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  max-width: 1300px;
+  margin: 0 auto 80px;
+}
+
+.oripa-card {
+  position: relative;
+  padding: 44px 20px 36px;
+  background: linear-gradient(160deg, rgba(220,20,60,0.08) 0%, rgba(10,10,10,0.95) 100%);
+  border: 2px solid rgba(220,20,60,0.3);
+  text-align: center;
+  transition: all 0.4s;
+  cursor: default;
+  overflow: hidden;
+}
+
+.oripa-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--crimson), var(--gold), var(--crimson));
+  transform: scaleX(0);
+  transition: transform 0.4s;
+}
+
+.oripa-card:hover::before { transform: scaleX(1); }
+
+.oripa-card:hover {
+  transform: translateY(-12px);
+  border-color: var(--crimson);
+  box-shadow: 0 24px 60px rgba(220,20,60,0.5), 0 0 40px rgba(255,215,0,0.2);
+  background: linear-gradient(160deg, rgba(220,20,60,0.15) 0%, rgba(10,10,10,0.98) 100%);
+}
+
+.oripa-card.featured {
+  border-color: var(--gold);
+  background: linear-gradient(160deg, rgba(255,215,0,0.08) 0%, rgba(10,10,10,0.95) 100%);
+  box-shadow: 0 12px 48px rgba(255,215,0,0.3);
+}
+
+.oripa-card.featured::before {
+  background: linear-gradient(90deg, var(--gold), var(--bright-gold), var(--gold));
+  transform: scaleX(1);
+}
+
+.oripa-popular {
+  position: absolute;
+  top: -2px; right: -2px;
+  background: linear-gradient(135deg, var(--crimson), var(--dark-red));
+  color: var(--gold);
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  padding: 6px 14px;
+  text-transform: uppercase;
+  border: 1px solid var(--gold);
+}
+
+.oripa-icon {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+  display: block;
+  filter: drop-shadow(0 0 15px rgba(255,215,0,0.6));
+}
+
+.oripa-price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  font-weight: 400;
+  background: linear-gradient(180deg, var(--gold) 0%, var(--bright-gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 6px;
+  line-height: 1;
+  filter: drop-shadow(0 0 10px rgba(255,215,0,0.5));
+}
+
+.oripa-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  color: var(--crimson);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.oripa-rate {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: var(--gold);
+  margin-bottom: 4px;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+}
+
+.oripa-rate-sub {
+  font-size: 0.7rem;
+  color: rgba(245,245,245,0.6);
+  font-weight: 400;
+  margin-bottom: 18px;
+  display: block;
+}
+
+.oripa-contents {
+  font-size: 0.78rem;
+  color: rgba(245,245,245,0.7);
+  line-height: 1.9;
+  font-weight: 400;
+  border-top: 1px solid rgba(220,20,60,0.2);
+  padding-top: 16px;
+}
+
+/* ======= APPEAL ======= */
+.oripa-appeal {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 60px 64px;
+  border: 2px solid var(--crimson);
+  background: linear-gradient(135deg, rgba(220,20,60,0.1), rgba(10,10,10,0.8));
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 52px;
+  position: relative;
+}
+
+.oripa-appeal::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--crimson), var(--gold), var(--crimson), transparent);
+}
+
+.oripa-appeal::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--crimson), var(--gold), var(--crimson), transparent);
+}
+
+.appeal-item {
+  text-align: center;
+}
+
+.appeal-icon {
+  font-size: 2.2rem;
+  display: block;
+  margin-bottom: 16px;
+  filter: drop-shadow(0 0 12px rgba(220,20,60,0.5));
+}
+
+.appeal-title {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 900;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  margin-bottom: 14px;
+}
+
+.appeal-desc {
+  font-size: 0.85rem;
+  color: rgba(245,245,245,0.8);
+  line-height: 1.9;
+  font-weight: 400;
+}
+
+/* ======= HOW TO ======= */
+.howto-section {
+  padding: 120px 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.howto-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.howto-grid::before {
+  content: '';
+  position: absolute;
+  top: 50px;
+  left: calc(12.5% + 50px);
+  right: calc(12.5% + 50px);
+  height: 2px;
+  background: linear-gradient(90deg, var(--crimson), var(--gold), var(--crimson));
+  opacity: 0.4;
+}
+
+.howto-step {
+  text-align: center;
+  padding: 0 24px;
+}
+
+.howto-num {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--crimson), var(--dark-red));
+  border: 3px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 32px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  color: var(--gold);
+  font-weight: 400;
+  box-shadow: 0 8px 32px rgba(220,20,60,0.5);
+  position: relative;
+  z-index: 1;
+}
+
+.howto-title {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 900;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  margin-bottom: 14px;
+}
+
+.howto-desc {
+  font-size: 0.82rem;
+  color: rgba(245,245,245,0.8);
+  line-height: 1.9;
+  font-weight: 400;
+}
+
+/* ======= FEATURES ======= */
+.features-section {
+  padding: 120px 80px;
+  background: linear-gradient(180deg, var(--black) 0%, #0f0505 50%, var(--black) 100%);
+  position: relative;
+  z-index: 1;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, rgba(220,20,60,0.4), rgba(220,20,60,0.1));
+  border: 2px solid rgba(220,20,60,0.3);
+}
+
+.feature-card {
+  background: linear-gradient(135deg, rgba(10,10,10,0.98), rgba(20,10,10,0.95));
+  padding: 52px 40px;
+  text-align: center;
+  transition: all 0.4s;
+  cursor: default;
+  position: relative;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--crimson), transparent);
+  transform: scaleX(0);
+  transition: transform 0.4s;
+}
+
+.feature-card:hover::before { transform: scaleX(1); }
+
+.feature-card:hover {
+  background: linear-gradient(135deg, rgba(220,20,60,0.12), rgba(10,10,10,0.98));
+  transform: translateY(-6px);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  display: block;
+  filter: drop-shadow(0 0 12px rgba(220,20,60,0.5));
+}
+
+.feature-title {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 900;
+  color: var(--gold);
+  letter-spacing: 0.12em;
+  margin-bottom: 14px;
+}
+
+.feature-desc {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: rgba(245,245,245,0.8);
+  line-height: 1.9;
+}
+
+/* ======= SHOP ======= */
+.shop-section {
+  padding: 120px 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.shop-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.shop-map-ph {
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, rgba(220,20,60,0.15), rgba(10,10,10,0.9));
+  border: 2px solid rgba(220,20,60,0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  position: relative;
+}
+
+.shop-map-ph::before {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 2px solid rgba(220,20,60,0.2);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.map-icon { font-size: 3.2rem; filter: drop-shadow(0 0 15px rgba(220,20,60,0.5)); }
+
+.map-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.shop-info h3 {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--gold), var(--bright-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 36px;
+}
+
+.limited-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  background: linear-gradient(135deg, rgba(220,20,60,0.3), rgba(139,0,0,0.5));
+  border: 2px solid var(--crimson);
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.info-table tr {
+  border-bottom: 1px solid rgba(220,20,60,0.2);
+}
+
+.info-table td {
+  padding: 16px 0;
+  font-size: 0.88rem;
+  line-height: 1.8;
+}
+
+.info-table td:first-child {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  color: var(--crimson);
+  text-transform: uppercase;
+  width: 120px;
+  vertical-align: top;
+  padding-top: 18px;
+}
+
+.info-table td:last-child {
+  color: var(--off-white);
+  font-weight: 400;
+}
+
+/* ======= CTA ======= */
+.cta-section {
+  padding: 100px 80px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-inner {
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 76px 64px;
+  border: 2px solid var(--crimson);
+  background: linear-gradient(135deg, rgba(220,20,60,0.1), rgba(10,10,10,0.9));
+  position: relative;
+}
+
+.cta-inner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--crimson), var(--gold), var(--crimson), transparent);
+}
+
+.cta-inner::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--crimson), var(--gold), var(--crimson), transparent);
+}
+
+.cta-title {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--gold), var(--bright-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
+}
+
+.cta-desc {
+  font-size: 0.92rem;
+  color: rgba(245,245,245,0.8);
+  line-height: 1.9;
+  margin-bottom: 44px;
+  font-weight: 400;
+}
+
+/* ======= FOOTER ======= */
+footer {
+  background: rgba(5,5,5,0.98);
+  border-top: 2px solid var(--crimson);
+  padding: 60px 80px 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 44px;
+  padding-bottom: 44px;
+  border-bottom: 1px solid rgba(220,20,60,0.2);
+}
+
+.footer-logo {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  font-style: italic;
+  background: linear-gradient(165deg, var(--crimson) 0%, var(--dark-red) 30%, var(--gold) 60%, var(--bright-gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+  transform: skewX(-8deg);
+  filter: drop-shadow(2px 2px 0 #000) drop-shadow(4px 4px 8px rgba(0,0,0,0.7));
+  position: relative;
+  display: inline-block;
+}
+
+.footer-logo::before {
+  content: '一騎当選';
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  z-index: -1;
+  background: linear-gradient(165deg, #fff 0%, #fff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 3px rgba(255,255,255,0.7));
+}
+
+.footer-tagline {
+  font-size: 0.8rem;
+  color: rgba(245,245,245,0.6);
+  letter-spacing: 0.1em;
+  font-weight: 400;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 56px;
+}
+
+.footer-nav-group h4 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  color: var(--crimson);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.footer-nav-group ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-nav-group a {
+  font-size: 0.82rem;
+  color: rgba(245,245,245,0.7);
+  text-decoration: none;
+  transition: color 0.3s;
+  font-weight: 400;
+}
+
+.footer-nav-group a:hover {
+  color: var(--gold);
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-copy {
+  font-size: 0.75rem;
+  color: rgba(245,245,245,0.4);
+  letter-spacing: 0.1em;
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+/* ======= ANIMATIONS ======= */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ======= RESPONSIVE ======= */
+@media (max-width: 768px) {
+  nav { padding: 0 20px; height: 60px; }
+  .nav-links { display: none; }
+  .nav-logo { font-size: 1.4rem; }
+
+  .hero { padding: 100px 24px 80px; }
+  .hero-rays { width: 400px; height: 400px; }
+  .hero-badge { font-size: 0.75rem; padding: 10px 20px; }
+  .hero-stats { gap: 24px; flex-wrap: wrap; }
+  .stat-num { font-size: 3rem; }
+  .stat-div { height: 50px; }
+  .hero-desc { font-size: 0.92rem; }
+  .hero-buttons { flex-direction: column; align-items: center; }
+  .btn-red, .btn-gold-outline { width: 100%; max-width: 320px; text-align: center; padding: 18px 24px; }
+
+  .oripa-section { padding: 80px 20px; }
+  .oripa-lineup { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .oripa-card { padding: 32px 16px 28px; }
+  .oripa-price { font-size: 1.6rem; }
+  .oripa-rate { font-size: 1rem; }
+
+  .oripa-appeal { grid-template-columns: 1fr; gap: 36px; padding: 44px 28px; }
+
+  .howto-section { padding: 80px 20px; }
+  .howto-grid { grid-template-columns: 1fr 1fr; gap: 44px 20px; }
+  .howto-grid::before { display: none; }
+  .howto-num { width: 72px; height: 72px; font-size: 1.5rem; }
+
+  .features-section { padding: 80px 20px; }
+  .features-grid { grid-template-columns: 1fr; }
+
+  #kaitori { padding: 80px 20px !important; }
+  #kaitori > div:last-child { grid-template-columns: 1fr 1fr !important; gap: 14px !important; }
+
+  .shop-section { padding: 80px 20px; }
+  .shop-grid { grid-template-columns: 1fr; gap: 44px; }
+  .shop-map-ph { aspect-ratio: 16/9; }
+
+  .cta-section { padding: 80px 20px; }
+  .cta-inner { padding: 52px 28px; }
+  .cta-title { font-size: 1.5rem; }
+  .cta-section .btn-red,
+  .cta-section .btn-gold-outline { width: 100%; max-width: 320px; }
+  .cta-inner > div:last-child { flex-direction: column; align-items: center; }
+
+  .section-title { font-size: 1.7rem; }
+  .section-subtitle { font-size: 0.86rem; }
+
+  footer { padding: 52px 20px 32px; }
+  .footer-top { flex-direction: column; gap: 36px; }
+  .footer-nav { flex-wrap: wrap; gap: 32px; }
+  .footer-bottom { flex-direction: column; gap: 14px; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .oripa-lineup { grid-template-columns: 1fr; max-width: 340px; margin-left: auto; margin-right: auto; }
+  .howto-grid { grid-template-columns: 1fr; }
+  #kaitori > div:last-child { grid-template-columns: 1fr !important; }
+  .hero-stats { flex-direction: column; gap: 20px; }
+  .stat-div { width: 70px; height: 2px; background: linear-gradient(90deg, transparent, var(--crimson), transparent); }
+}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">ポケMoon<span>Pokémon Card Specialist</span></a>
+  <a href="#" class="nav-logo">一騎当選<span>Pokémon Card Specialist</span></a>
   <ul class="nav-links">
-    <li><a href="#oripa" class="nav-oripa">✦ オリパ販売</a></li>
+    <li><a href="#oripa" class="nav-oripa">⚡ オリパ販売</a></li>
     <li><a href="#howto">引き方</a></li>
     <li><a href="#features">特徴</a></li>
     <li><a href="#kaitori">買取</a></li>
     <li><a href="#shop">店舗情報</a></li>
   </ul>
-  <a href="#oripa" class="nav-cta">オリパを引く</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
-  <div class="hero-moon"></div>
+  <div class="hero-rays"></div>
   <div class="hero-content">
-    <div class="hero-oripa-badge">✦ &nbsp;実店舗限定 オリジナルパック 好評販売中&nbsp; ✦</div>
-    <h1 class="hero-title">ポケMoon</h1>
-    <p class="hero-subtitle-jp">ポケモンカード専門店 | 新宿</p>
+    <div class="hero-badge">⚡ 実店舗限定 オリジナルパック 好評販売中 ⚡</div>
+    <h1 class="hero-title">一騎当選</h1>
+    <p class="hero-subtitle">ポケモンカード専門店 | 新宿</p>
 
     <div class="hero-stats">
       <div class="stat-item">
@@ -318,22 +1114,19 @@
     </div>
 
     <p class="hero-desc">
-      ポケMoonのオリパは、すべて公平・高還元を徹底設計。<br>
+      一騎当選のオリパは、すべて公平・高還元を徹底設計。<br>
       1,000円〜10,000円まで幅広いラインナップで、<br>
-      どなたでも気軽にお楽しみいただけます。
+      どなたでも気軽に挑戦いただけます。
     </p>
+
     <div class="hero-buttons">
-      <a href="#oripa" class="btn-gold">✦ オリパを見る</a>
-      <a href="#kaitori" class="btn-outline">カード買取はこちら</a>
+      <a href="#oripa" class="btn-red">⚡ オリパを見る</a>
+      <a href="#kaitori" class="btn-gold-outline">カード買取はこちら</a>
     </div>
-  </div>
-  <div class="hero-scroll">
-    <span class="scroll-text">Scroll</span>
-    <div class="scroll-line"></div>
   </div>
 </section>
 
-<div class="gold-divider"></div>
+<div class="divider"></div>
 
 <!-- ORIPA SECTION -->
 <section class="oripa-section" id="oripa">
@@ -341,49 +1134,53 @@
   <h2 class="section-title">オリパ ラインナップ</h2>
   <p class="section-subtitle">
     全ライン還元率100%超えを保証。1パックからどうぞ。<br>
-    <span style="color:#ff8a80;font-size:0.84rem;">⚑ 実店舗限定販売 ─ 新宿店頭のみでお買い求めいただけます</span>
+    <span style="color:var(--crimson);font-size:0.88rem;">⚑ 実店舗限定販売 ─ 新宿店頭のみでお買い求めいただけます</span>
   </p>
 
   <div class="oripa-lineup">
     <div class="oripa-card">
-      <span class="oripa-icon">🌙</span>
+      <span class="oripa-icon">🔥</span>
       <div class="oripa-price">¥1,000</div>
-      <span class="oripa-name">Moonlit Pack</span>
-      <div class="oripa-kangen">還元率 105%</div>
-      <span class="oripa-kangen-sub">期待値 ¥1,050〜</span>
+      <span class="oripa-name">Battle Start</span>
+      <div class="oripa-rate">還元率 105%</div>
+      <span class="oripa-rate-sub">期待値 ¥1,050〜</span>
       <div class="oripa-contents">5枚封入<br>Rレア以上1枚保証<br>SARチャンス枠あり</div>
     </div>
+
     <div class="oripa-card">
-      <span class="oripa-icon">⭐</span>
+      <span class="oripa-icon">⚔️</span>
       <div class="oripa-price">¥3,000</div>
-      <span class="oripa-name">Star Pack</span>
-      <div class="oripa-kangen">還元率 108%</div>
-      <span class="oripa-kangen-sub">期待値 ¥3,240〜</span>
+      <span class="oripa-name">Warrior Pack</span>
+      <div class="oripa-rate">還元率 108%</div>
+      <span class="oripa-rate-sub">期待値 ¥3,240〜</span>
       <div class="oripa-contents">8枚封入<br>SR以上1枚保証<br>URチャンス枠あり</div>
     </div>
+
     <div class="oripa-card featured">
       <div class="oripa-popular">人気No.1</div>
       <span class="oripa-icon">👑</span>
       <div class="oripa-price">¥5,000</div>
-      <span class="oripa-name">Royal Pack</span>
-      <div class="oripa-kangen">還元率 112%</div>
-      <span class="oripa-kangen-sub">期待値 ¥5,600〜</span>
+      <span class="oripa-name">Champion Pack</span>
+      <div class="oripa-rate">還元率 112%</div>
+      <span class="oripa-rate-sub">期待値 ¥5,600〜</span>
       <div class="oripa-contents">10枚封入<br>SAR/UR1枚保証<br>PSAチャンス枠あり</div>
     </div>
+
     <div class="oripa-card">
       <span class="oripa-icon">💎</span>
       <div class="oripa-price">¥8,000</div>
-      <span class="oripa-name">Diamond Pack</span>
-      <div class="oripa-kangen">還元率 115%</div>
-      <span class="oripa-kangen-sub">期待値 ¥9,200〜</span>
+      <span class="oripa-name">Legend Pack</span>
+      <div class="oripa-rate">還元率 115%</div>
+      <span class="oripa-rate-sub">期待値 ¥9,200〜</span>
       <div class="oripa-contents">12枚封入<br>SAR2枚以上保証<br>高額カードチャンス</div>
     </div>
+
     <div class="oripa-card">
-      <span class="oripa-icon">🌟</span>
+      <span class="oripa-icon">🏆</span>
       <div class="oripa-price">¥10,000</div>
-      <span class="oripa-name">Moon Legend</span>
-      <div class="oripa-kangen">還元率 120%</div>
-      <span class="oripa-kangen-sub">期待値 ¥12,000〜</span>
+      <span class="oripa-name">Victory Pack</span>
+      <div class="oripa-rate">還元率 120%</div>
+      <span class="oripa-rate-sub">期待値 ¥12,000〜</span>
       <div class="oripa-contents">15枚封入<br>SAR×2＋UR保証<br>超高額カード封入</div>
     </div>
   </div>
@@ -407,7 +1204,7 @@
   </div>
 </section>
 
-<div class="gold-divider"></div>
+<div class="divider"></div>
 
 <!-- HOW TO -->
 <section class="howto-section" id="howto">
@@ -438,12 +1235,12 @@
   </div>
 </section>
 
-<div class="gold-divider"></div>
+<div class="divider"></div>
 
 <!-- FEATURES -->
 <section class="features-section" id="features">
   <div class="section-label">Features</div>
-  <h2 class="section-title">ポケMoonの強み</h2>
+  <h2 class="section-title">一騎当選の強み</h2>
   <p class="section-subtitle">オリパ販売・カード買取、どちらも妥協なく</p>
   <div class="features-grid">
     <div class="feature-card">
@@ -479,82 +1276,78 @@
   </div>
 </section>
 
-<div class="gold-divider"></div>
+<div class="divider"></div>
 
 <!-- KAITORI -->
 <section style="padding:120px 80px;position:relative;z-index:1;" id="kaitori">
   <div class="section-label">Buy Back</div>
   <h2 class="section-title">カード買取</h2>
   <p class="section-subtitle">オリパで引いたカードも、大切なコレクションも。高価買取します。</p>
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1100px;margin:0 auto;">
-    <div style="padding:36px 20px;border:1px solid rgba(201,151,58,0.2);text-align:center;background:linear-gradient(135deg,rgba(13,26,69,0.6),rgba(7,16,46,0.8));transition:all 0.4s;" onmouseover="this.style.transform='translateY(-8px)'" onmouseout="this.style.transform='translateY(0)'">
-      <div style="font-size:0.56rem;font-family:'Cinzel',serif;letter-spacing:0.35em;color:var(--gold);margin-bottom:10px;">★UR ULTRA RARE</div>
-      <div style="font-size:0.88rem;font-weight:600;color:var(--text-light);margin-bottom:8px;">リザードン ex SAR</div>
-      <div style="font-family:'Cinzel',serif;font-size:1.1rem;font-weight:700;color:var(--gold-light);">¥180,000~</div>
-      <div style="font-size:0.66rem;color:var(--text-muted);margin-top:4px;">PSA10最高評価</div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1200px;margin:0 auto;">
+    <div style="padding:40px 20px;border:2px solid rgba(220,20,60,0.3);text-align:center;background:linear-gradient(135deg,rgba(220,20,60,0.08),rgba(10,10,10,0.9));transition:all 0.4s;" onmouseover="this.style.transform='translateY(-10px)';this.style.borderColor='var(--crimson)'" onmouseout="this.style.transform='translateY(0)';this.style.borderColor='rgba(220,20,60,0.3)'">
+      <div style="font-size:0.6rem;font-family:'Bebas Neue',sans-serif;letter-spacing:0.35em;color:var(--crimson);margin-bottom:10px;">★UR ULTRA RARE</div>
+      <div style="font-size:0.92rem;font-weight:700;color:var(--off-white);margin-bottom:8px;">リザードン ex SAR</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--gold);">¥180,000~</div>
+      <div style="font-size:0.7rem;color:rgba(245,245,245,0.6);margin-top:4px;">PSA10最高評価</div>
     </div>
-    <div style="padding:36px 20px;border:1px solid rgba(201,151,58,0.2);text-align:center;background:linear-gradient(135deg,rgba(13,26,69,0.6),rgba(7,16,46,0.8));transition:all 0.4s;" onmouseover="this.style.transform='translateY(-8px)'" onmouseout="this.style.transform='translateY(0)'">
-      <div style="font-size:0.56rem;font-family:'Cinzel',serif;letter-spacing:0.35em;color:var(--gold);margin-bottom:10px;">★SAR SPECIAL ART</div>
-      <div style="font-size:0.88rem;font-weight:600;color:var(--text-light);margin-bottom:8px;">ピカチュウ ex SAR</div>
-      <div style="font-family:'Cinzel',serif;font-size:1.1rem;font-weight:700;color:var(--gold-light);">¥85,000~</div>
-      <div style="font-size:0.66rem;color:var(--text-muted);margin-top:4px;">美品状態</div>
+    <div style="padding:40px 20px;border:2px solid rgba(220,20,60,0.3);text-align:center;background:linear-gradient(135deg,rgba(220,20,60,0.08),rgba(10,10,10,0.9));transition:all 0.4s;" onmouseover="this.style.transform='translateY(-10px)';this.style.borderColor='var(--crimson)'" onmouseout="this.style.transform='translateY(0)';this.style.borderColor='rgba(220,20,60,0.3)'">
+      <div style="font-size:0.6rem;font-family:'Bebas Neue',sans-serif;letter-spacing:0.35em;color:var(--crimson);margin-bottom:10px;">★SAR SPECIAL ART</div>
+      <div style="font-size:0.92rem;font-weight:700;color:var(--off-white);margin-bottom:8px;">ピカチュウ ex SAR</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--gold);">¥85,000~</div>
+      <div style="font-size:0.7rem;color:rgba(245,245,245,0.6);margin-top:4px;">美品状態</div>
     </div>
-    <div style="padding:36px 20px;border:1px solid rgba(201,151,58,0.2);text-align:center;background:linear-gradient(135deg,rgba(13,26,69,0.6),rgba(7,16,46,0.8));transition:all 0.4s;" onmouseover="this.style.transform='translateY(-8px)'" onmouseout="this.style.transform='translateY(0)'">
-      <div style="font-size:0.56rem;font-family:'Cinzel',serif;letter-spacing:0.35em;color:var(--gold);margin-bottom:10px;">★UR GOLD RARE</div>
-      <div style="font-size:0.88rem;font-weight:600;color:var(--text-light);margin-bottom:8px;">ルギア V SAR</div>
-      <div style="font-family:'Cinzel',serif;font-size:1.1rem;font-weight:700;color:var(--gold-light);">¥72,000~</div>
-      <div style="font-size:0.66rem;color:var(--text-muted);margin-top:4px;">PSA評価品</div>
+    <div style="padding:40px 20px;border:2px solid rgba(220,20,60,0.3);text-align:center;background:linear-gradient(135deg,rgba(220,20,60,0.08),rgba(10,10,10,0.9));transition:all 0.4s;" onmouseover="this.style.transform='translateY(-10px)';this.style.borderColor='var(--crimson)'" onmouseout="this.style.transform='translateY(0)';this.style.borderColor='rgba(220,20,60,0.3)'">
+      <div style="font-size:0.6rem;font-family:'Bebas Neue',sans-serif;letter-spacing:0.35em;color:var(--crimson);margin-bottom:10px;">★UR GOLD RARE</div>
+      <div style="font-size:0.92rem;font-weight:700;color:var(--off-white);margin-bottom:8px;">ルギア V SAR</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--gold);">¥72,000~</div>
+      <div style="font-size:0.7rem;color:rgba(245,245,245,0.6);margin-top:4px;">PSA評価品</div>
     </div>
-    <div style="padding:36px 20px;border:1px solid rgba(201,151,58,0.4);text-align:center;background:linear-gradient(135deg,rgba(26,45,107,0.6),rgba(13,26,69,0.9));transition:all 0.4s;" onmouseover="this.style.transform='translateY(-8px)'" onmouseout="this.style.transform='translateY(0)'">
-      <div style="font-size:0.56rem;font-family:'Cinzel',serif;letter-spacing:0.35em;color:var(--gold);margin-bottom:10px;">★全レアリティ対応</div>
-      <div style="font-size:0.88rem;font-weight:600;color:var(--text-light);margin-bottom:8px;">その他多数</div>
-      <div style="font-family:'Cinzel',serif;font-size:1.1rem;font-weight:700;color:var(--gold-light);">まずはご相談</div>
-      <div style="font-size:0.66rem;color:var(--text-muted);margin-top:4px;">1枚からOK</div>
+    <div style="padding:40px 20px;border:2px solid var(--gold);text-align:center;background:linear-gradient(135deg,rgba(255,215,0,0.08),rgba(10,10,10,0.9));transition:all 0.4s;" onmouseover="this.style.transform='translateY(-10px)'" onmouseout="this.style.transform='translateY(0)'">
+      <div style="font-size:0.6rem;font-family:'Bebas Neue',sans-serif;letter-spacing:0.35em;color:var(--crimson);margin-bottom:10px;">★全レアリティ対応</div>
+      <div style="font-size:0.92rem;font-weight:700;color:var(--off-white);margin-bottom:8px;">その他多数</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--gold);">まずはご相談</div>
+      <div style="font-size:0.7rem;color:rgba(245,245,245,0.6);margin-top:4px;">1枚からOK</div>
     </div>
   </div>
 </section>
 
-<div class="gold-divider"></div>
+<div class="divider"></div>
 
 <!-- SHOP INFO -->
-<section class="shop-section" id="shop" style="background:linear-gradient(180deg,var(--midnight),rgba(13,26,69,0.4),var(--midnight));">
+<section class="shop-section" id="shop" style="background:linear-gradient(180deg,var(--black),rgba(15,5,5,0.5),var(--black));">
   <div class="section-label">Shop Information</div>
   <h2 class="section-title">店舗情報</h2>
   <p class="section-subtitle">オリパは店頭のみ！ぜひご来店ください</p>
   <div class="shop-grid">
     <div class="shop-map-ph">
-      <div class="corner-decor tl"></div><div class="corner-decor tr"></div>
-      <div class="corner-decor bl"></div><div class="corner-decor br"></div>
       <span class="map-icon">📍</span>
       <span class="map-label">Map Coming Soon</span>
     </div>
     <div class="shop-info">
       <div class="limited-badge">🏪 オリパは実店舗限定販売</div>
-      <h3>ポケMoon</h3>
+      <h3>一騎当選</h3>
       <table class="info-table">
-        <tr><td>店舗名</td><td>ポケMoon（ポケムーン）</td></tr>
-        <tr><td>住所</td><td>東京都新宿区新宿<br><span style="font-size:0.74rem;color:var(--text-muted);">※仮住所・詳細はオープン時公開</span></td></tr>
+        <tr><td>店舗名</td><td>一騎当選（いっきとうせん）</td></tr>
+        <tr><td>住所</td><td>東京都新宿区新宿<br><span style="font-size:0.78rem;color:rgba(245,245,245,0.5);">※仮住所・詳細はオープン時公開</span></td></tr>
         <tr><td>営業時間</td><td>平日 13:00〜21:00<br>土日祝 10:00〜21:00</td></tr>
         <tr><td>定休日</td><td>不定休（SNSで告知）</td></tr>
         <tr><td>取扱品</td><td>ポケモンカード専門<br>オリパ販売・カード買取</td></tr>
-        <tr><td>アクセス</td><td>新宿駅 徒歩圏内<br><span style="font-size:0.74rem;color:var(--text-muted);">※詳細はオープン時公開</span></td></tr>
+        <tr><td>アクセス</td><td>新宿駅 徒歩圏内<br><span style="font-size:0.78rem;color:rgba(245,245,245,0.5);">※詳細はオープン時公開</span></td></tr>
       </table>
     </div>
   </div>
 </section>
 
-<div class="gold-divider"></div>
+<div class="divider"></div>
 
 <!-- CTA -->
 <section class="cta-section">
   <div class="cta-inner">
-    <div class="corner-decor tl"></div><div class="corner-decor tr"></div>
-    <div class="corner-decor bl"></div><div class="corner-decor br"></div>
     <div class="cta-title">お問合せ・買取申込み</div>
     <p class="cta-desc">オリパのご質問・カード買取のご相談は<br>お気軽にお問合せください。LINEでの事前査定も受け付けております。</p>
-    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-      <a href="#" class="btn-gold">📋 買取申込みフォーム</a>
-      <a href="#" class="btn-outline">💬 LINEで相談する</a>
+    <div style="display:flex;gap:18px;justify-content:center;flex-wrap:wrap;">
+      <a href="#" class="btn-red">📋 買取申込みフォーム</a>
+      <a href="#" class="btn-gold-outline">💬 LINEで相談する</a>
     </div>
   </div>
 </section>
@@ -563,7 +1356,7 @@
 <footer>
   <div class="footer-top">
     <div>
-      <div class="footer-logo">ポケMoon</div>
+      <div class="footer-logo">一騎当選</div>
       <div class="footer-tagline">ポケモンカード専門店 ｜ オリパ販売・高価買取 ｜ 新宿</div>
     </div>
     <div class="footer-nav">
@@ -597,8 +1390,8 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="footer-copy">© 2025 ポケMoon All Rights Reserved.</div>
-    <div style="font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.15em;color:rgba(136,152,204,0.4);">古物商許可証 東京都公安委員会 第〇〇〇〇号</div>
+    <div class="footer-copy">© 2025 一騎当選 All Rights Reserved.</div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:0.65rem;letter-spacing:0.15em;color:rgba(245,245,245,0.3);">古物商許可証 東京都公安委員会 第〇〇〇〇号</div>
   </div>
 </footer>
 
